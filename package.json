@@ -1,6 +1,25 @@
 {
-  "name": "enketo-player",
+  "name": "odk-player",
+  "description": "React library for rendering ODK form powered by Enketo Express",
   "version": "0.1.0",
+  "author": "Amit Sharma",
+  "keywords": [
+    "react",
+    "dynamic form",
+    "odk",
+    "enketo"
+  ],
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Samagra-Development/odk-player"
+  },
   "dependencies": {},
   "scripts": {
     "start": "react-scripts start",
@@ -27,23 +46,16 @@
     ]
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.4",
+    "@babel/preset-env": "^7.24.4",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "web-vitals": "^2.1.4",
+    "babel-cli": "^6.26.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1"
-  },
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "files": [
-    "dist",
-    "README.md"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "URL_OF_YOUR_REPOSITORY"
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   }
 }
