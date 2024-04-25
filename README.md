@@ -13,8 +13,6 @@ Before using ODK Player, ensure the following prerequisites are met:
 ### How to Use:
 To use ODK Player in your React application, follow these steps:
 
-[Insert instructions here]
-
 ```jsx
 /* Sample Code snippet to incorporate ODK player */
 // Import ODKPlayer and initializeODKPlayer from 'odk-player'
@@ -63,9 +61,6 @@ function App() {
 }
 
 export default App;
-
-
-export default MyODKForm;
 ```
 
 ##  Props:
