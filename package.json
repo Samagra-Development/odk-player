@@ -1,7 +1,7 @@
 {
   "name": "odk-player",
   "description": "React library for rendering ODK form powered by Enketo Express",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Amit Sharma",
   "keywords": [
     "react",
