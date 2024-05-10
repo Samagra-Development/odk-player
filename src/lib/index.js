@@ -87,9 +87,15 @@ const ODKPlayer = ({
         window.addEventListener("message", handleEventTrigger);
     };
 
+    // Unbinding form events
+    const unbindEventListener = () => {
+        window.removeEventListener('message', handleEventTrigger);
+    }
+
     useEffect(() => {
         bindEventListener();
         getSurveyUrl(formId, setFormUrl, offline);
+        return () => unbindEventListener();
     }, [])
 
     return (<div>
