@@ -18,17 +18,17 @@ function App() {
   }
 
   useEffect(() => {
-    initializeODKPlayer("https://8065-samagradevelop-workflow-dj4ut8bgzgf.ws-us110.gitpod.io", "https://3560-samagradevelop-workflow-dj4ut8bgzgf.ws-us110.gitpod.io");
+    initializeODKPlayer("https://express.staging.nisai.samagra.io", "https://central-demo.nl.samagra.io/v1/projects/9");
   }, [])
 
   return (
     <div className="App">
       <header className="App-header">
         <ODKPlayer
-          formId={"Nursing Form-Medical (CRP)"}
+          formId={"UfAhe3PV72GX"}
           height='100vh'
           width='50vw'
-          offline={false}
+          offline={true}
           onChange={onChange}
           onSuccess={onSubmit}
           onFailure={onFailure}
