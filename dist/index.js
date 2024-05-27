@@ -22,6 +22,13 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 const getSurveyUrl = async function getSurveyUrl(formId, setFormUrl) {
   let offline = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
   try {
+    const formCache = JSON.parse(localStorage.getItem('form_cache') || '{}');
+    let formRes = formCache["".concat(formId, "_").concat(offline ? 'offline' : 'online')];
+    if (formRes) {
+      console.log("Returning from Cache: ", "".concat(formId, "_").concat(offline ? 'offline' : 'online'));
+      setFormUrl(formRes);
+      return;
+    }
     let res = await fetch("".concat(sessionStorage.getItem('enketo_express_server_uri'), "/api/v2/survey/").concat(offline ? 'offline' : "iframe"), {
       method: 'POST',
       headers: {
@@ -34,6 +41,8 @@ const getSurveyUrl = async function getSurveyUrl(formId, setFormUrl) {
       })
     });
     res = await res.json();
+    formCache["".concat(formId, "_").concat(offline ? 'offline' : 'online')] = offline ? res.offline_url : res.iframe_url;
+    localStorage.setItem('form_cache', JSON.stringify(formCache));
     setFormUrl(offline ? res.offline_url : res.iframe_url);
   } catch (err) {
     console.log(err);

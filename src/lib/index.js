@@ -8,6 +8,15 @@ import React, { useEffect, useState } from "react";
 */
 const getSurveyUrl = async (formId, setFormUrl, offline = false) => {
     try {
+        const formCache = JSON.parse(localStorage.getItem('form_cache') || '{}');
+        let formRes = formCache[`${formId}_${offline ? 'offline' : 'online'}`];
+
+        if (formRes) {
+            console.log("Returning from Cache: ", `${formId}_${offline ? 'offline' : 'online'}`);
+            setFormUrl(formRes);
+            return;
+        }
+
         let res = await fetch(`${sessionStorage.getItem('enketo_express_server_uri')}/api/v2/survey/${offline ? 'offline' : "iframe"}`, {
             method: 'POST',
             headers: {
@@ -20,6 +29,8 @@ const getSurveyUrl = async (formId, setFormUrl, offline = false) => {
             })
         });
         res = await res.json();
+        formCache[`${formId}_${offline ? 'offline' : 'online'}`] = offline ? res.offline_url : res.iframe_url;
+        localStorage.setItem('form_cache', JSON.stringify(formCache));
         setFormUrl(offline ? res.offline_url : res.iframe_url)
     } catch (err) {
         console.log(err);
